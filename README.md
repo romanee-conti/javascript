@@ -1,1 +1,0 @@
-Repo for practice exercises to assist with learning JS.
