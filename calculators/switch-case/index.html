@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Case Challenges</title>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <h1>Positive or Negative</h1>
+    <input type="text" onblur="isPositive(event)">
+    <h1>Veg Supermarket</h1>
+    <label for="veg-type">Choose your vegatable:</label>
+    <select name="veg-type" id="veg-type" onchange="getPrice(event)">
+        <option value="" disabled selected>Select your Option</option>
+        <option value="potatoes">Potatoes</option>
+        <option value="carrots">Carrots</option>
+        <option value="cabbage">Cabbage</option>
+        <option value="brocolli">Brocolli</option>
+        <option value="asparagus">Asparagus</option>
+    </select>
+</body>
+
+</html>
