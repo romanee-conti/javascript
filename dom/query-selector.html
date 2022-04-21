@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Selector</title>
+    <style>
+        main {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        div {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+    </main>
+
+    <script>
+
+        const allSquares = document.querySelectorAll('div');
+
+        console.dir(allSquares);
+
+        allSquares.forEach(square => {
+
+            square.style.backgroundColor = 'orange';
+        })
+
+    </script>
+
+</body>
+
+</html>

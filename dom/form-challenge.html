@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Challenge</title>
+    <style>
+        main {
+            margin: auto 25%;
+        }
+
+        form {
+            border: 3px solid blue;
+            padding: 10px;
+            display: flex;
+            align-items: left;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        input {
+            display: block;
+            margin: 5px 0;
+        }
+
+        button {
+            margin-top: 8px;
+        }
+
+        .valid {
+            border: 3px solid green;
+        }
+
+        .invalid {
+            border: 3px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="welcome">Register for the Nology Conference 2022!</h1>
+    <main>
+        <form action="" id="reg-form">
+            <label for="name">Name:</label>
+            <input type="text" placeholder="Ben Dover" name="name">
+            <label for="email">Email:</label>
+            <input type="email" placeholder="bd69@goons.com" name="email:">
+            <button onclick="handleRegister(event)">Register!</button>
+        </form>
+    </main>
+
+    <script>
+        const welcome = document.querySelector('#welcome');
+        const form = document.getElementById('reg-form');
+        const inputs = document.querySelectorAll('input');
+        const button = document.querySelector('button');
+
+        form.style.backgroundColor = 'yellow';
+
+        const handleRegister = (event) => {
+            event.preventDefault();
+            alert('Form submitted!');
+            welcome.innerHTML = "Thank you for registering!";
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener('input', (event) => {
+                let inputValue = event.target.value;
+
+                if (inputValue != undefined && inputValue.length > 0) {
+                    event.target.classList.remove('invalid');
+                    event.target.classList.add('valid');
+                } else {
+                    input.classList.remove('valid');
+                    input.classList.add('invalid');
+                }
+            })
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>
