@@ -31,7 +31,7 @@ body {
     background-color: rgba(255,255,255, .9);
 }
 
-.span-two {
+.calculator-grid .span-two {
     grid-column: span 2;
 }
 
