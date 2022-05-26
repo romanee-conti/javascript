@@ -10,6 +10,7 @@ class Calculator {
         this.currentOperand = ''
         this.previousOperand = ''
         this.operation = undefined
+        this.isResultShown = false
     }
 
     delete() {
@@ -59,7 +60,7 @@ class Calculator {
         this.currentOperand = computation
         this.operation = undefined
         this.previousOperand = ''
-        isResultShown = true;
+        this.isResultShown = true;
     }
 
     getDisplayNumber(number) {
@@ -82,9 +83,8 @@ class Calculator {
     }
 
     newCalculation() {
-        if (isResultShown === true) {
-            this.clear();
-            isResultShown = false;
+        if (this.previousOperand === '' && this.isResultShown === true) {
+            this.clear()   
         }
     }
 
@@ -107,7 +107,6 @@ const equalsButton = document.querySelector('[data-equals]');
 const allClearButton = document.querySelector('[data-all-clear]');
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
 const currentOperandTextElement = document.querySelector('[data-current-operand]');
-let isResultShown = false;
 
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
 
