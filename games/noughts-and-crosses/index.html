@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +9,33 @@
     <link rel="stylesheet" href="/style.css">
     <script src="./app.js" defer></script>
 </head>
-<body>
 
+<body>
+    <div class="scoreboard">
+        <div data-player-one>Player One</div>
+        <div class="scores">
+            <span data-p1-score class="1p-score">0</span>
+            <span>-</span>
+            <span data-p2-score class="2p-score">0</span>
+        </div>
+        <div data-player-two>Player Two</div>
+    </div>
+    <div id="draw">Draw!</div>
+    <div class="player-grid">
+        <div data-grid data-top-left class="top-left"></div>
+        <div data-grid data-top-middle class="top-middle"></div>
+        <div data-grid data-top-right class="top-right"></div>
+        <div data-grid data-left class="left"></div>
+        <div data-grid data-middle class="middle"></div>
+        <div data-grid data-right class="right"></div>
+        <div data-grid data-bottom-left class="bottom-left"></div>
+        <div data-grid data-bottom-middle class="bottom-middle"></div>
+        <div data-grid data-bottom-right class="bottom-right"></div>
+    </div>
+    <div class="control-panel">
+        <button data-new-game class="new-game">New Game</button>
+        <button data-reset class="reset">Reset</button>
+    </div>
 </body>
+
 </html>
