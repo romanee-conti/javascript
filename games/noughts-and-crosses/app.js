@@ -76,3 +76,11 @@ playerGrid.forEach(square => {
     })
 })
 
+newGameButton.addEventListener('click', () => {
+    noughtsAndCrosses.newGame()
+})
+
+resetButton.addEventListener('click', () => {
+    noughtsAndCrosses.newGame()
+    noughtsAndCrosses.reset()
+})
