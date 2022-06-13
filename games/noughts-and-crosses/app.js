@@ -1,86 +1,84 @@
-const playerOneScoreTextElement = document.querySelector('[data-p1-score]')
-const playerTwoScoreTextElement = document.querySelector('[data-p2-score]')
-const playerGrid = document.querySelectorAll('[data-grid]')
+const noughts = document.querySelector('[data-player-one]')
+const crosses = document.querySelector('[data-player-two]')
+let noughtScore = document.querySelector('[data-p1-score]')
+let crossScore = document.querySelector('[data-p2-score]')
+const gridSquares = document.querySelectorAll('.grid-square')
 const newGameButton = document.querySelector('[data-new-game]')
 const resetButton = document.querySelector('[data-reset]')
-const gameDrawn = document.getElementById('draw')
-const playerOne = document.querySelector('[data-player-one]')
-const playerTwo = document.querySelector('[data-player-two]')
+const drawMessage = document.getElementById('draw')
+let isPlayerOneTurn = true
 
+function startGame() {
+    gridSquares.forEach(square => {
+        square.addEventListener('click', handleClick, { once: true })
+    })
+    playerTurn()
+}
 
-const topLeft = document.querySelector('[data-top-left]')
-const topMiddle = document.querySelector('[data-top-middle]')
-const topRight = document.querySelector('[data-top-right]')
+function reset() {
+    noughtScore.innerText = 0
+    crossScore.innerText = 0
+    newGame()
+}
 
-const left = document.querySelector('[data-left]')
-const middle = document.querySelector('[data-middle]')
-const right = document.querySelector('[data-right]')
+function newGame() {
+    gridSquares.forEach(square => {
+        square.innerText = ''
+        square.removeEventListener('click', handleClick)
+        square.classList.remove('filled')
+    })
+    startGame()
+}
 
-const bottomLeft = document.querySelector('[data-bottom-left]')
-const bottomMiddle = document.querySelector('[data-bottom-middle]')
-const bottomRight = document.querySelector('[data-bottom-right]')
-
-
-class NoughtsAndCrosses {
-    constructor(playerOneScoreTextElement, playerTwoScoreTextElement) {
-        this.playerOneScoreTextElement = playerOneScoreTextElement
-        this.playerTwoScoreTextElement = playerTwoScoreTextElement
-        this.noughtOrCross = 'X'
-        this.isGameDrawn = false
-        this.isPlayerOne = true
-        this.currentPlayer()
-    }
-
-    reset() {
-        playerOneScoreTextElement.innerText = 0
-        playerTwoScoreTextElement.innerText = 0
-    }
-
-    newGame() {
-        playerGrid.forEach(square => {
-            square.innerText = ''
-        })
-    }
-
-    currentPlayer() {
-        if (this.isPlayerOne === true) {
-            playerOne.style.color = 'red'
-            playerOne.style.textDecoration = 'underline'
-            playerTwo.style.color = 'black'
-            playerTwo.style.textDecoration = 'none'
-        } else {
-            playerOne.style.color = 'black'
-            playerOne.style.textDecoration = 'none'
-            playerTwo.style.color = 'red'
-            playerTwo.style.textDecoration = 'underline'
-        }
-    }
-
-
-    gameDrawn() {
-        if (this.isGameDrawn === true) {
-            gameDrawn.style.display = block;
-            this.isGameDrawn = false;
-        }
-    }
-
-    victoryCheck() {
+function handleClick(e) {
+    const currentSquare = e.target
+    const currentTurn = isPlayerOneTurn ? 'O' : 'X'
+    currentSquare.innerText = currentTurn
+    currentSquare.classList.add('filled')
+    if (checkWin(currentTurn)) {
+        console.log('winner')
+    } else {
+        isPlayerOneTurn = !isPlayerOneTurn
+        playerTurn()
     }
 }
 
-const noughtsAndCrosses = new NoughtsAndCrosses(playerOneScoreTextElement, playerTwoScoreTextElement)
+function playerTurn() {
+    if (isPlayerOneTurn === true) {
+        noughts.classList.add('active')
+        crosses.classList.remove('active')
+    } else {
+        crosses.classList.add('active')
+        noughts.classList.remove('active')
+    }
+}
 
-playerGrid.forEach(square => {
-    square.addEventListener('click', () => {
-        noughtsAndCrosses.gameDrawn()
+function increaseScore() {
+    if (isPlayerOneTurn === true) {
+        noughtScore.innerText++
+    } else crossScore.innerText++
+}
+
+function checkWin(currentTurn) {
+    const winningCombos = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ]
+    return winningCombos.some(combination => {
+        return combination.every(index => {
+            if (gridSquares[index].innerText === currentTurn) return true
+        })
     })
-})
+}
 
-newGameButton.addEventListener('click', () => {
-    noughtsAndCrosses.newGame()
-})
+newGameButton.addEventListener('click', newGame)
 
-resetButton.addEventListener('click', () => {
-    noughtsAndCrosses.newGame()
-    noughtsAndCrosses.reset()
-})
+resetButton.addEventListener('click', reset)
+
+startGame()
