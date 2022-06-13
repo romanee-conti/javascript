@@ -77,7 +77,7 @@ function increaseScore() {
 function checkWin(currentTurn) {
     return winningCombos.some(combination => {
         return combination.every(index => {
-            if (gridSquares[index].innerText === currentTurn) return true
+            return gridSquares[index].innerText === currentTurn
         })
     })
 }
