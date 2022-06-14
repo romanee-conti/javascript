@@ -1,7 +1,7 @@
-const noughts = document.querySelector('[data-player-one]')
-const crosses = document.querySelector('[data-player-two]')
-let noughtScore = document.querySelector('[data-p1-score]')
-let crossScore = document.querySelector('[data-p2-score]')
+const noughtsTextElement = document.querySelector('[data-noughts]')
+const crossesTextElement = document.querySelector('[data-crosses]')
+let noughtScore = document.querySelector('[data-noughts-score]')
+let crossScore = document.querySelector('[data-crosses-score]')
 const gridSquares = document.querySelectorAll('.grid-square')
 const newGameButton = document.querySelector('[data-new-game]')
 const resetButton = document.querySelector('[data-reset]')
@@ -60,11 +60,11 @@ function handleClick(e) {
 function turnIndicator() {
     isNoughts = !isNoughts
     if (isNoughts === true) {
-        noughts.classList.add('active')
-        crosses.classList.remove('active')
+        noughtsTextElement.classList.add('active')
+        crossesTextElement.classList.remove('active')
     } else {
-        crosses.classList.add('active')
-        noughts.classList.remove('active')
+        crossesTextElement.classList.add('active')
+        noughtsTextElement.classList.remove('active')
     }
 }
 

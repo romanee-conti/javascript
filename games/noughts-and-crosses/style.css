@@ -41,7 +41,7 @@ body {
 }
 
 .grid-square {
-    font-size: 5rem;
+    font-size: 6rem;
     font-family: 'Bradley-Hand', 'Indie Flower', cursive;
     display: flex;
     justify-content: center;
