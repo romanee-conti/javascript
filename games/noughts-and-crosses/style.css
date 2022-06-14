@@ -48,6 +48,12 @@ body {
     align-items: center;
     cursor: pointer;
     border: 3px solid black;
+    transition: 0.3s ease-in-out;
+    padding: 5px;
+}
+
+.grid-square:hover {
+    background-color: rgba(0,0,0,0.05)
 }
 
 .grid-square:first-child,
