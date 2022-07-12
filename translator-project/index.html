@@ -13,18 +13,15 @@
 <body>
     <h1 class="title">Morse Code Translator</h1>
     <div class="control-panel">
-        <p>Select language:</p>
-        <select name="input-language" class="language-selector" id="input-language">
-            <option value="morse">Morse</option>
-            <option value="english">English</option>
+        <select name="input-language" class="input-language" id="input-language">
+            <option value="" disabled selected>Please select an option...</option>
+            <option value="English">English to Morse</option>
+            <option value="Morse">Morse to English</option>
         </select>
-        <p>to:</p>
-        <p>English</p>
-        <button class="translate-btn">Translate</button>
     </div>
     <div class="translator">
-        <textarea name="input" id="text-input" class="input" cols="30" rows="10" placeholder="Write here..."></textarea>
-        <div class="output">Hello</div>
+        <textarea name="input" id="text-input" class="text-input" cols="30" rows="10"></textarea>
+        <div class="text-output"></div>
     </div>
 </body>
 
