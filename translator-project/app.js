@@ -8,8 +8,7 @@ class Translator {
             ["A", ".-"], ["B", "-..."], ["C", "-.-."], ["D", "-.."], ["E", "."], ["F", "..-."], ["G", "--."], ["H", "...."], ["I", ".."], ["J", ".---"],
             ["K", "-.-"], ["L", ".-.."], ["M", "--"], ["N", "-."], ["O", "---"], ["P", ".--."], ["Q", "--.-"], ["R", ".-."], ["S", "..."], ["T", "-"], ["U", "..-"],
             ["V", "...-"], ["W", ".--"], ["X", "-..-"], ["Y", "-.--"], ["Z", "--.."], ["1", ".----"], ["2", "..---"], ["3", "...--"], ["4", "....-"], ["5", "....."],
-            ["6", "-...."], ["7", "--..."], ["8", "---.."], ["9", "----."], ["0", "-----"], [".", ".-.-.-"], [",", "--..--"], ["?", "..--.."], ["'", ".----."], ["!", "-.-.--"],
-            ["/", "-..-."], [":", "---..."], [";", "-.-.-."], ["=", "-...-"], ["-", "-....-"], ["_", "..--.-"], ["\"", ".-..-."], ["@", ".--.-."], ["(", "-.--.-"], [" ", " "]
+            ["6", "-...."], ["7", "--..."], ["8", "---.."], ["9", "----."], ["0", "-----"], [" ", " "], ["/", "/"]
         ];
     }
 
@@ -21,7 +20,7 @@ class Translator {
         }
 
         if (this.inputLanguage === "Morse") {
-            this.inputTextElement.placeholder = "Type Morse code using the '.' and '-' characters. Seperate words with spaces (' ') and letters with a slash ('/')."
+            this.inputTextElement.placeholder = "Type Morse code using the '.' and '-' characters. Seperate letters with spaces (' ') and words with a slash ('/')."
             this.isEnglishToMorse = false
         }
     }
@@ -31,20 +30,40 @@ class Translator {
         this.output = ""
     }
 
-    // translateToEnglish() {
-    //     const englishOutput = '';
-    // }
+    validateInput() {
+        this.input = this.inputTextElement.value
 
-    // translateToMorse() {
-    //     const englishArray = this.input.split("")
-    //     const morseOutput = englishArray.map(char => {
-    //     })
+        if (this.isEnglishToMorse) {
+            const englishInputArray = this.input.toUpperCase().split("")
+            this.translateToMorse(englishInputArray)
+        }
 
-    // }
+        if (!this.isEnglishToMorse) {
+            const morseWordArray = this.input.split("/")
+            const morseInputArray = morseWordArray.map(word => word.split(' '))
+            this.translateToEnglish(morseInputArray)
+        }
+
+
+    }
+
+    translateToEnglish(morseInputArray) {
+        console.log(morseInputArray)
+
+    }
+
+    translateToMorse(englishInputArray) {
+        const morseArr = englishInputArray.map(char => {
+            const letterPair = this.alphabet.filter(letters => letters.includes(char))
+            return letterPair.map(letter => letter[1])
+        })
+        this.output = morseArr.join('')
+
+    }
 
     updateDisplay() {
-        this.inputTextElement.value = this.input
         this.outputTextElement.innerText = this.output
+        this.inputTextElement.value = this.input
     }
 }
 
@@ -57,5 +76,10 @@ const translator = new Translator(inputTextElement, outputTextElement)
 inputLanguage.addEventListener('change', () => {
     translator.setLanguage(inputLanguage.value);
     translator.clear();
+    translator.updateDisplay();
+})
+
+inputTextElement.addEventListener('input', () => {
+    translator.validateInput();
     translator.updateDisplay();
 })
