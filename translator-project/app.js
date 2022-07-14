@@ -8,7 +8,7 @@ class Translator {
             ["A", ".-"], ["B", "-..."], ["C", "-.-."], ["D", "-.."], ["E", "."], ["F", "..-."], ["G", "--."], ["H", "...."], ["I", ".."], ["J", ".---"],
             ["K", "-.-"], ["L", ".-.."], ["M", "--"], ["N", "-."], ["O", "---"], ["P", ".--."], ["Q", "--.-"], ["R", ".-."], ["S", "..."], ["T", "-"], ["U", "..-"],
             ["V", "...-"], ["W", ".--"], ["X", "-..-"], ["Y", "-.--"], ["Z", "--.."], ["1", ".----"], ["2", "..---"], ["3", "...--"], ["4", "....-"], ["5", "....."],
-            ["6", "-...."], ["7", "--..."], ["8", "---.."], ["9", "----."], ["0", "-----"], [" ", " "], ["/", "/"]
+            ["6", "-...."], ["7", "--..."], ["8", "---.."], ["9", "----."], ["0", "-----"], [" ", " "]
         ];
     }
 
@@ -48,16 +48,22 @@ class Translator {
     }
 
     translateToEnglish(morseInputArray) {
-        console.log(morseInputArray)
-
+        const englishArr = morseInputArray.map(word => {
+            return word.map(char => {
+                const letterPair = this.alphabet.filter(letters => letters.includes(char))
+                return letterPair[0][0]
+            })
+        })
+        const cleanEnglish = englishArr.map(word => word.join(''))
+        this.output = cleanEnglish
     }
 
     translateToMorse(englishInputArray) {
         const morseArr = englishInputArray.map(char => {
             const letterPair = this.alphabet.filter(letters => letters.includes(char))
-            return letterPair.map(letter => letter[1])
+            return letterPair[0][1]
         })
-        this.output = morseArr.join('')
+        this.output = morseArr.join(' ')
 
     }
 
