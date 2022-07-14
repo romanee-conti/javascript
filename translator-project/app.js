@@ -52,12 +52,12 @@ class Translator {
         const englishArr = morseInputArray.map(word => {
             return word.map(char => {
                 const letterPair = this.alphabet.filter(letters => letters.includes(char))
+                if (letterPair.length > 1) return letterPair[0][0]
                 return letterPair.map(letter => letter[0])
             })
         })
         const cleanEnglish = englishArr.map(word => word.join('')).join(' ')
         this.output = cleanEnglish
-        console.log(cleanEnglish)
     }
 
     translateToMorse(englishInputArray) {
