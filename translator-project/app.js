@@ -56,14 +56,13 @@ class Translator {
             return word.map(char => {
                 const letterPair = this.alphabet.filter(letters => letters.includes(char))
 
-                if (letterPair.length > 1) return letterPair[0][0] // to differentiate between 'full stop' and letter 'E'
+                if (letterPair.length > 1) return letterPair[0][0] // to differentiate between 'full stop' and letter 'E'. Morse code for the letter 'E' is a fullstop.
 
                 if (letterPair.length === 0) {
                     this.isError = true;
                     return;
                 }
 
-                // this.isError = false;
                 return letterPair.map(letter => letter[0]);
 
             })
@@ -98,7 +97,7 @@ class Translator {
 
             const letterPair = this.alphabet.filter(letters => letters.includes(char))
 
-            if (letterPair.length > 1) return letterPair[1][1] // to differentiate between 'full stop' and letter 'E'
+            if (letterPair.length > 1) return letterPair[1][1] // to differentiate between 'full stop' punctuation mark and the letter 'E'. Morse code for the letter 'E' is a fullstop.
 
             return letterPair.map(letter => letter[1])
         })
