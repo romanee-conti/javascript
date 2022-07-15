@@ -56,14 +56,14 @@ class Translator {
             return word.map(char => {
                 const letterPair = this.alphabet.filter(letters => letters.includes(char))
 
-                if (letterPair.length > 1) return letterPair[0][0]
+                if (letterPair.length > 1) return letterPair[0][0] // to differentiate between 'full stop' and letter 'E'
 
-                if (letterPair === '[]') {
-                    this.isError === true;
+                if (letterPair.length === 0) {
+                    this.isError = true;
                     return;
                 }
 
-                this.isError === false;
+                // this.isError = false;
                 return letterPair.map(letter => letter[0]);
 
             })
@@ -75,11 +75,13 @@ class Translator {
     checkForError(errorMessage) {
         this.errorMessage = errorMessage
 
+        if (this.isError === false) {
+            this.errorMessage.style.display = 'none'
+        }
+
         if (this.isError === true) {
             this.errorMessage.style.display = 'block'
-        } else {
-            this.errorMessage.style.display = 'none'
-            this.isError === false
+            this.isError = false
         }
     }
 
@@ -95,6 +97,9 @@ class Translator {
             if (char !== ' ') isNewWord = true;
 
             const letterPair = this.alphabet.filter(letters => letters.includes(char))
+
+            if (letterPair.length > 1) return letterPair[1][1] // to differentiate between 'full stop' and letter 'E'
+
             return letterPair.map(letter => letter[1])
         })
         this.output = morseArr.join(' ')
