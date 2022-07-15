@@ -15,13 +15,15 @@ class Translator {
 
     setLanguage(inputLanguage) {
         this.inputLanguage = inputLanguage
+        this.inputTextElement.removeAttribute('disabled')
+
         if (this.inputLanguage === "English") {
-            this.inputTextElement.placeholder = "Type your text here..."
+            this.inputTextElement.placeholder = "Type English text here..."
             this.isEnglishToMorse = true
         }
 
         if (this.inputLanguage === "Morse") {
-            this.inputTextElement.placeholder = "Type Morse code using the '.' and '-' characters. Seperate letters with spaces (' ') and words with a slash ('/')."
+            this.inputTextElement.placeholder = "Type Morse code here..."
             this.isEnglishToMorse = false
         }
     }
@@ -29,6 +31,7 @@ class Translator {
     clear() {
         this.input = ""
         this.output = ""
+        this.isError = false
     }
 
     validateInput() {
@@ -40,7 +43,7 @@ class Translator {
         }
 
         if (!this.isEnglishToMorse) {
-            const morseWordArray = this.input.split("/")
+            const morseWordArray = this.input.toLowerCase().split("/")
             const morseInputArray = morseWordArray.map(word => word.split(' '))
             this.translateToEnglish(morseInputArray)
         }
@@ -52,16 +55,36 @@ class Translator {
         const englishArr = morseInputArray.map(word => {
             return word.map(char => {
                 const letterPair = this.alphabet.filter(letters => letters.includes(char))
+
                 if (letterPair.length > 1) return letterPair[0][0]
-                return letterPair.map(letter => letter[0])
+
+                if (letterPair === '[]') {
+                    this.isError === true;
+                    return;
+                }
+
+                this.isError === false;
+                return letterPair.map(letter => letter[0]);
+
             })
         })
         const cleanEnglish = englishArr.map(word => word.join('')).join(' ')
         this.output = cleanEnglish
     }
 
+    checkForError(errorMessage) {
+        this.errorMessage = errorMessage
+
+        if (this.isError === true) {
+            this.errorMessage.style.display = 'block'
+        } else {
+            this.errorMessage.style.display = 'none'
+            this.isError === false
+        }
+    }
+
     translateToMorse(englishInputArray) {
-        let isNewWord = true
+        let isNewWord = false
         const morseArr = englishInputArray.map(char => {
 
             if (char === ' ' && isNewWord === true) {
@@ -87,6 +110,7 @@ class Translator {
 const inputLanguage = document.querySelector('.input-language')
 const inputTextElement = document.querySelector('.text-input')
 const outputTextElement = document.querySelector('.text-output')
+const errorMessage = document.querySelector('.error-msg')
 
 const translator = new Translator(inputTextElement, outputTextElement)
 
@@ -99,4 +123,6 @@ inputLanguage.addEventListener('change', () => {
 inputTextElement.addEventListener('input', () => {
     translator.validateInput();
     translator.updateDisplay();
+    translator.checkForError(errorMessage);
 })
+

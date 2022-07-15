@@ -18,9 +18,14 @@
             <option value="English">English to Morse</option>
             <option value="Morse">Morse to English</option>
         </select>
+        <p class="instructions">
+            Type Morse code using the '.' and '-' characters.
+            Seperate letters with spaces (' ') and words with a slash ('/').
+        </p>
     </div>
     <div class="translator">
-        <textarea name="input" id="text-input" class="text-input" cols="30" rows="10"></textarea>
+            <label for="input" class="error-msg">Invalid Morse code detected</label>
+            <textarea disabled name="input" id="text-input" class="text-input" cols="30" rows="10"></textarea>
         <div class="text-output"></div>
     </div>
 </body>
