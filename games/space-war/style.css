@@ -7,6 +7,24 @@ body {
     padding: 0;
     margin: 0;
     background-color: black;
+    color: red;
+}
+
+p {
+    position: absolute;
+    height: 13%;
+}
+
+ul {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    list-style: none;
+    background-color: rgba(255, 100, 237, 0.75);
+    color: white;
 }
 
 img {
@@ -27,7 +45,6 @@ img {
     display: grid;
     grid-template-columns: repeat(5, 100px);
     grid-template-rows: repeat(2, 100px);
-    gap: 1px;
     justify-content: center;
 }
 
@@ -35,6 +52,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .defence-fleet .mothership {
@@ -58,6 +76,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .attack-fleet .attack-ship > img {
@@ -105,4 +124,8 @@ img {
     color: white;
     background-color: black;
     border-color: white;
+}
+
+.hit {
+    filter: brightness(0) invert(1);
 }
