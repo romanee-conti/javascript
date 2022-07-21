@@ -9,12 +9,18 @@ body {
     background-color: black;
 }
 
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .title {
     margin: 20px;
     font-size: 3em;
     display: flex;
     justify-content: center;
     color: white;
+    text-decoration: underline 10px;
 }
 
 .defence-fleet {
@@ -26,24 +32,36 @@ body {
 }
 
 .defence-fleet > div {
-    background-color: fuchsia;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .defence-fleet .mothership {
     grid-column: 1 / -1;
 }
 
+.defence-fleet .defence-ship > img {
+    height: 50%;
+}
+
 .attack-fleet {
     display: grid;
     grid-template-columns: repeat(4, 125px);
-    grid-template-rows: repeat(2, 100px);
+    grid-template-rows: repeat(2, 80px);
     gap: 1px;
     justify-content: center;
     margin-top: 1px;
 }
 
 .attack-fleet > div {
-    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.attack-fleet .attack-ship > img {
+    height: 40%;
 }
 
 .control-panel {
@@ -72,7 +90,7 @@ body {
 .control-panel .reset-btn {
     border-radius: 10px;
     font-size: 1em;
-    width: 125px;
+    width: 100px;
     background-color: white;
     border: 2px solid black;
 }
