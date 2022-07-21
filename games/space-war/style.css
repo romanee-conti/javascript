@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alien-fleet > div {
+    background-color: fuchsia;
+    height: 100px;
+    width: 100px;
+    display: grid;
+    grid-template-columns: repeat(3);
+    grid-template-rows: repeat(3);
+}
