@@ -4,16 +4,87 @@
 }
 
 body {
+    padding: 0;
+    margin: 0;
+    background-color: black;
+}
+
+.title {
+    margin: 20px;
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.defence-fleet {
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(2, 100px);
+    gap: 1px;
+    justify-content: center;
+}
+
+.defence-fleet > div {
+    background-color: fuchsia;
+}
+
+.defence-fleet .mothership {
+    grid-column: 1 / -1;
+}
+
+.attack-fleet {
+    display: grid;
+    grid-template-columns: repeat(4, 125px);
+    grid-template-rows: repeat(2, 100px);
+    gap: 1px;
+    justify-content: center;
+    margin-top: 1px;
+}
+
+.attack-fleet > div {
+    background-color: green;
+}
+
+.control-panel {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 10px;
 }
 
-.alien-fleet > div {
-    background-color: fuchsia;
-    height: 100px;
-    width: 100px;
-    display: grid;
-    grid-template-columns: repeat(3);
-    grid-template-rows: repeat(3);
+.control-panel > button {
+    margin: 10px;
+    font-size: 1.25em;
+    width: 200px;
+}
+
+.control-panel .fire-btn {
+    height: 2.5em;
+    border-radius: 10px;
+    background-color: crimson;
+    color: yellow;
+    border: 2px solid yellow;
+}
+
+.control-panel .reset-btn {
+    border-radius: 10px;
+    font-size: 1em;
+    width: 125px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.fire-btn:hover {
+    color: crimson;
+    background-color: yellow;
+    border-color: crimson;
+}
+
+.reset-btn:hover {
+    color: white;
+    background-color: black;
+    border-color: white;
 }
