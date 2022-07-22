@@ -15,12 +15,12 @@ p {
     height: 13%;
 }
 
-ul {
+.stats-menu {
     position: absolute;
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 10px;
+    padding: 10px 6px;
     border-radius: 10px;
     list-style: none;
     background-color: rgba(255, 100, 237, 0.75);
