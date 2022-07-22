@@ -10,23 +10,6 @@ body {
     color: red;
 }
 
-p {
-    position: absolute;
-    height: 13%;
-}
-
-.stats-menu {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 10px 6px;
-    border-radius: 10px;
-    list-style: none;
-    background-color: rgba(255, 100, 237, 0.75);
-    color: white;
-}
-
 img {
     max-width: 100%;
     max-height: 100%;
@@ -41,46 +24,35 @@ img {
     text-decoration: underline 10px;
 }
 
-.defence-fleet {
+.alien-fleet {
+    height: 60vh;
+    width: 600px;
+    margin: 10px auto;
+}
+
+.alien-fleet > div {
+    height: 33.33%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.mothership {
     display: grid;
-    grid-template-columns: repeat(5, 100px);
-    grid-template-rows: repeat(2, 100px);
-    justify-content: center;
+    grid-template-columns: repeat(1, 180px);
+    grid-template-rows: repeat(1, 180px);
 }
 
-.defence-fleet > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.defence-fleet .mothership {
-    grid-column: 1 / -1;
-}
-
-.defence-fleet .defence-ship > img {
-    height: 50%;
-}
-
-.attack-fleet {
+.defence-ships {
     display: grid;
-    grid-template-columns: repeat(4, 125px);
-    grid-template-rows: repeat(2, 80px);
-    gap: 1px;
-    justify-content: center;
-    margin-top: 1px;
+    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(1, 80px);
+    align-content: center;
 }
 
-.attack-fleet > div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.attack-fleet .attack-ship > img {
-    height: 40%;
+.attack-ships {
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    grid-template-rows: repeat(2, 60px);
 }
 
 .control-panel {

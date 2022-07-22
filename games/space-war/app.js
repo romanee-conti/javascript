@@ -1,8 +1,3 @@
-const alienFleet = document.querySelectorAll('[data-alien-ship]')
-const mothership = document.querySelector('[data-mothership')
-const defenceShips = document.querySelectorAll('[data-defence-ship]')
-const attackShips = document.querySelectorAll('[data-attack-ship]')
-
 class Ship {
     constructor(shipClass, hitPoints, damagePerHit, image) {
         this.shipClass = shipClass;
@@ -16,7 +11,7 @@ class Ship {
     };
 };
 
-class MotherShip extends Ship {
+class Mothership extends Ship {
     constructor() {
         super("Mothership", 100, 9, "./mothership.png")
     }
@@ -34,49 +29,70 @@ class AttackShip extends Ship {
     }
 }
 
+const mothershipDiv = document.querySelector('[data-mothership]')
+const defenceDiv = document.querySelector('[data-defence]')
+const attackDiv = document.querySelector('[data-attack]')
+const alienFleet = document.querySelector('[data-alien-fleet]')
 
-    function newGame () {
-        const defenceShipArr = [...defenceShips]
-        const attackShipArr = [...attackShips]
+let alienArr = [];
 
-        mothership.innerHTML += `
-        <ul class="stats-menu hide">
-            <li>${mothershipObj.class}</li>
-            <li>HP: ${mothershipObj.currentHP}/${mothershipObj.maxHP} </li>
-        </ul >`
+const numOfMotherships = 1;
+const numOfDefenceShips = 5;
+const numOfAttackShips = 8;
+const totalShips = numOfMotherships + numOfDefenceShips + numOfAttackShips;
 
-        defenceShipArr.map(ship => {
-            ship.innerHTML += `
-            <ul class="stats-menu hide">
-            <li>${defenceShipObj.class}</li>
-            <li>HP: ${defenceShipObj.currentHP}/${defenceShipObj.maxHP} </li>
-        </ul >`
-        })
+const populateAlienArray = () => {
+    alienArr = [];
 
-        attackShipArr.map(ship => {
-            ship.innerHTML += `
-            <ul class="stats-menu hide">
-            <li>${attackShipObj.class}</li>
-            <li>HP: ${attackShipObj.currentHP}/${attackShipObj.maxHP} </li>
-        </ul >`
-        })
+    for (let index = 0; index < totalShips; index++) {
+
+        let newMothership
+        let newDefenceShip
+        let newAttackShip
+
+        if (index < numOfMotherships) {
+            newMothership = new Mothership()
+            alienArr.push(newMothership)
+        } else if (index <= numOfDefenceShips) {
+            newDefenceShip = new DefenceShip()
+            alienArr.push(newDefenceShip)
+        } else if (index <= totalShips) {
+            newAttackShip = new AttackShip()
+            alienArr.push(newAttackShip)
+        }
     }
 
-    function toggleMenu(e) {
-        const currentShip = e.target
-        currentShip.children[1].classList.remove('hide')
-        
-    }
+    console.log(alienArr)
 
-    function destroyed(ship) {
-        ship.firstElementChild.style.display = 'none'
-        ship.innerText = "Destroyed"
-    }
+}
 
-newGame()
+const createHTML = () => {
+    alienArr.forEach(ship => {
 
-alienFleet.addEventListener('mouseover', toggleMenu)
+        if (ship.shipClass === 'Mothership') {
+            mothershipDiv.innerHTML += `
+            <div><img src="${ship.image}" alt="${ship.shipClass}"/></div>
+            `
+        }
 
-// mothership.addEventListener('mouseover', () => {
-   
-// })
+        if (ship.shipClass === 'Defence Ship') {
+            defenceDiv.innerHTML += `
+            <div><img src="${ship.image}" alt="${ship.shipClass}"/></div>
+            `
+        }
+
+        if (ship.shipClass === 'Attack Ship') {
+            attackDiv.innerHTML += `
+            <div><img src="${ship.image}" alt="${ship.shipClass}"/></div>
+            `
+        }
+
+    })
+}
+
+const startGame = () => {
+    populateAlienArray()
+    createHTML()
+}
+
+startGame()
