@@ -71,7 +71,13 @@ const createHTML = () => {
 
         if (ship.shipClass === 'Mothership') {
             mothershipDiv.innerHTML += `
-            <div><img src="${ship.image}" alt="${ship.shipClass}"/></div>
+            <div class="ship-container">
+            <img src="${ship.image}" alt="${ship.shipClass}"/>
+            <ul class="stats-menu">
+            <li>Mothership</li>
+            <li>HP ${ship.hitPoints}</li>
+            </ul>
+            </div>
             `
         }
 
@@ -96,3 +102,4 @@ const startGame = () => {
 }
 
 startGame()
+

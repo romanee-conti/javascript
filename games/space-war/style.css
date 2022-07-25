@@ -36,10 +36,28 @@ img {
     justify-content: space-around;
 }
 
+.ship-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.stats-menu {
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+    background-color: pink;
+    border-radius: 10px;
+    position: absolute;
+    display: none;
+}
+
 .mothership {
     display: grid;
-    grid-template-columns: repeat(1, 180px);
-    grid-template-rows: repeat(1, 180px);
+    grid-template-rows: repeat(1, 100px);
+    grid-template-columns: repeat(1, 100px);
 }
 
 .defence-ships {
@@ -54,6 +72,7 @@ img {
     grid-template-columns: repeat(4, 60px);
     grid-template-rows: repeat(2, 60px);
 }
+
 
 .control-panel {
     display: flex;
