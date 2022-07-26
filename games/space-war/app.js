@@ -46,10 +46,6 @@ const populateAlienArray = () => {
 
     for (let index = 0; index < totalShips; index++) {
 
-        let newMothership
-        let newDefenceShip
-        let newAttackShip
-
         if (index < numOfMotherships) {
             newMothership = new Mothership()
             alienArr.push(newMothership)
@@ -61,48 +57,30 @@ const populateAlienArray = () => {
             alienArr.push(newAttackShip)
         }
     }
-
-    console.log(alienArr)
-
 }
 
 const createHTML = () => {
     alienArr.forEach(ship => {
+        const shipHTML = `
+        <div class="ship-container">
+        <img src="${ship.image}" alt="${ship.shipClass}"/>
+        <ul class="stats-menu">
+        <li>${ship.shipClass}</li>
+        <li>HP ${ship.hitPoints}</li>
+        </ul>
+        </div>
+        `
 
         if (ship.shipClass === 'Mothership') {
-            mothershipDiv.innerHTML += `
-            <div class="ship-container">
-            <img class="ship-img mothership-img" src="${ship.image}" alt="${ship.shipClass}"/>
-            <ul class="stats-menu">
-            <li>${ship.shipClass}</li>
-            <li>HP ${ship.hitPoints}</li>
-            </ul>
-            </div>
-            `
+            mothershipDiv.innerHTML += shipHTML;
         }
 
         if (ship.shipClass === 'Defence Ship') {
-            defenceDiv.innerHTML += `
-            <div class="ship-container">
-            <img class="ship-img" src="${ship.image}" alt="${ship.shipClass}"/>
-            <ul class="stats-menu">
-            <li>${ship.shipClass}</li>
-            <li>HP ${ship.hitPoints}</li>
-            </ul>
-            </div>
-            `
+            defenceDiv.innerHTML += shipHTML;
         }
 
         if (ship.shipClass === 'Attack Ship') {
-            attackDiv.innerHTML += `
-            <div class="ship-container">
-            <img class="ship-img" src="${ship.image}" alt="${ship.shipClass}"/>
-            <ul class="stats-menu">
-            <li>${ship.shipClass}</li>
-            <li>HP ${ship.hitPoints}</li>
-            </ul>
-            </div>
-            `
+            attackDiv.innerHTML += shipHTML;
         }
 
     })
