@@ -29,10 +29,13 @@ class AttackShip extends Ship {
     }
 }
 
-const mothershipDiv = document.querySelector('[data-mothership]')
-const defenceDiv = document.querySelector('[data-defence]')
-const attackDiv = document.querySelector('[data-attack]')
-const alienFleet = document.querySelector('[data-alien-fleet]')
+const mothershipDiv = document.querySelector('[data-mothership-div]')
+const defenceDiv = document.querySelector('[data-defence-div]')
+const attackDiv = document.querySelector('[data-attack-div]')
+
+const fireBtn = document.querySelector('[data-fire-btn]')
+const resetBtn = document.querySelector('[data-reset-btn]')
+
 
 let alienArr = [];
 
@@ -60,6 +63,10 @@ const populateAlienArray = () => {
 }
 
 const createHTML = () => {
+    mothershipDiv.innerHTML = ''
+    defenceDiv.innerHTML = ''
+    attackDiv.innerHTML = ''
+
     alienArr.forEach(ship => {
         const shipHTML = `
         <div class="ship-container">
@@ -86,9 +93,34 @@ const createHTML = () => {
     })
 }
 
+const damageRandomShip = () => {
+    const randomIndex = Math.floor((Math.random() * alienArr.length));
+    const randomShip = alienArr[randomIndex];
+    randomShip.takeDamage()
+}
+
 const startGame = () => {
     populateAlienArray()
     createHTML()
 }
 
+const resetGame = () => {
+    alienArr = null
+    startGame()
+}
+
+
+// victory checker for when mothership is destroyed
+// taken damage add class / visual flag
+
+fireBtn.addEventListener('click', () => {
+    damageRandomShip()
+    createHTML()
+})
+
+resetBtn.addEventListener('click', () => {
+    resetGame()
+})
+
 startGame()
+
