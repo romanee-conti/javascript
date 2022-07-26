@@ -72,9 +72,9 @@ const createHTML = () => {
         if (ship.shipClass === 'Mothership') {
             mothershipDiv.innerHTML += `
             <div class="ship-container">
-            <img src="${ship.image}" alt="${ship.shipClass}"/>
+            <img class="ship-img mothership-img" src="${ship.image}" alt="${ship.shipClass}"/>
             <ul class="stats-menu">
-            <li>Mothership</li>
+            <li>${ship.shipClass}</li>
             <li>HP ${ship.hitPoints}</li>
             </ul>
             </div>
@@ -83,13 +83,25 @@ const createHTML = () => {
 
         if (ship.shipClass === 'Defence Ship') {
             defenceDiv.innerHTML += `
-            <div><img src="${ship.image}" alt="${ship.shipClass}"/></div>
+            <div class="ship-container">
+            <img class="ship-img" src="${ship.image}" alt="${ship.shipClass}"/>
+            <ul class="stats-menu">
+            <li>${ship.shipClass}</li>
+            <li>HP ${ship.hitPoints}</li>
+            </ul>
+            </div>
             `
         }
 
         if (ship.shipClass === 'Attack Ship') {
             attackDiv.innerHTML += `
-            <div><img src="${ship.image}" alt="${ship.shipClass}"/></div>
+            <div class="ship-container">
+            <img class="ship-img" src="${ship.image}" alt="${ship.shipClass}"/>
+            <ul class="stats-menu">
+            <li>${ship.shipClass}</li>
+            <li>HP ${ship.hitPoints}</li>
+            </ul>
+            </div>
             `
         }
 
@@ -102,4 +114,3 @@ const startGame = () => {
 }
 
 startGame()
-

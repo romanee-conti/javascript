@@ -48,16 +48,20 @@ img {
     list-style: none;
     padding: 5px;
     margin: 0;
-    background-color: pink;
+    background-color: rgb(225, 0, 255, 0.75);
+    color: white;
     border-radius: 10px;
     position: absolute;
     display: none;
 }
 
+.ship-container:hover .stats-menu {
+    display: block;
+}
+
 .mothership {
     display: grid;
     grid-template-rows: repeat(1, 100px);
-    grid-template-columns: repeat(1, 100px);
 }
 
 .defence-ships {
@@ -119,8 +123,4 @@ img {
 
 .hit {
     filter: brightness(0) invert(1);
-}
-
-.hide {
-    display: none;
 }
