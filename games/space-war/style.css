@@ -61,6 +61,12 @@ img {
     justify-content: center;
 }
 
+.ship-container > p {
+    color: red;
+    margin: 0;
+    font-size: 0.8em;
+}
+
 .stats-menu {
     list-style: none;
     padding: 5px;
@@ -121,10 +127,6 @@ img {
     border-color: white;
 }
 
-.hit {
-    filter: brightness(0) invert(1);
-}
-
 .victory-msg {
     position: fixed;
     left: 0;
@@ -144,4 +146,8 @@ img {
 
 .victory-msg > button {
     font-size: 1.2em;
+}
+
+.hit {
+    filter: brightness(0) invert(1);
 }

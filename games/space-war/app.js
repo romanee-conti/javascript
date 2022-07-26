@@ -4,6 +4,7 @@ class Ship {
         this.hitPoints = hitPoints;
         this.damagePerHit = damagePerHit;
         this.image = image;
+        this.isHit = false;
     };
 
     takeDamage() {
@@ -32,6 +33,7 @@ class AttackShip extends Ship {
 const mothershipDiv = document.querySelector('[data-mothership-div]')
 const defenceDiv = document.querySelector('[data-defence-div]')
 const attackDiv = document.querySelector('[data-attack-div]')
+const shipContainers = document.querySelectorAll('[data-ship-container]')
 
 const fireBtn = document.querySelector('[data-fire-btn]')
 const resetBtn = document.querySelectorAll('[data-reset-btn]')
@@ -69,8 +71,37 @@ const createHTML = () => {
     attackDiv.innerHTML = ''
 
     alienArr.forEach(ship => {
+
+        if (ship.isHit === true) {
+            const shipHTML = `
+            <div data-ship-container class="ship-container">
+            <img class="hit" src="${ship.image}" alt="${ship.shipClass}"/>
+            <ul class="stats-menu">
+            <li>${ship.shipClass}</li>
+            <li>HP ${ship.hitPoints}</li>
+            </ul>
+            <p>Hit! -${ship.damagePerHit}HP</p>
+            </div>
+            `
+
+            if (ship.shipClass === 'Mothership') {
+                mothershipDiv.innerHTML += shipHTML;
+            }
+    
+            if (ship.shipClass === 'Defence Ship') {
+                defenceDiv.innerHTML += shipHTML;
+            }
+    
+            if (ship.shipClass === 'Attack Ship') {
+                attackDiv.innerHTML += shipHTML;
+            }
+
+            ship.isHit = false;
+            return
+        }
+        
         const shipHTML = `
-        <div class="ship-container">
+        <div data-ship-container class="ship-container">
         <img src="${ship.image}" alt="${ship.shipClass}"/>
         <ul class="stats-menu">
         <li>${ship.shipClass}</li>
@@ -98,6 +129,7 @@ const damageRandomShip = () => {
     const randomIndex = Math.floor((Math.random() * alienArr.length));
     const randomShip = alienArr[randomIndex];
     randomShip.takeDamage()
+    randomShip.isHit = true;
 
     victoryChecker()
     removeDestroyedShips()
@@ -112,6 +144,7 @@ const victoryChecker = () => {
 const removeDestroyedShips = () => {
     alienArr = alienArr.filter(ship => ship.hitPoints > 0)
 }
+
 
 const startGame = () => {
     populateAlienArray()
@@ -131,12 +164,14 @@ fireBtn.addEventListener('click', () => {
 
 resetBtn.forEach(button => {
     button.addEventListener('click', () => {
-    resetGame()
-})
+        resetGame()
+    })
 })
 
 startGame()
 
 // to do:
 
-// taken damage visual flag / add class
+// add something visual for when a ship gets destroyed
+// is there a way of keeping the ships in position when destroyed?
+// would have to target image rather than entire div
