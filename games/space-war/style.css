@@ -7,7 +7,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: black;
-    color: red;
+    color: white;
 }
 
 img {
@@ -20,20 +20,37 @@ img {
     font-size: 3em;
     display: flex;
     justify-content: center;
-    color: white;
     text-decoration: underline 10px;
 }
 
 .alien-fleet {
     height: 60vh;
     width: 600px;
-    margin: 10px auto;
+    margin: auto;
 }
 
 .alien-fleet > div {
-    height: 33.33%;
-    width: 100%;
     justify-content: space-around;
+    padding: 5px;
+}
+
+.mothership {
+    display: grid;
+    grid-template-rows: repeat(1, 100px);
+    align-content: center;
+}
+
+.defence-ships {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    align-content: center;
+}
+
+.attack-ships {
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    gap: 20px;
+    margin: 20px;
 }
 
 .ship-container {
@@ -49,7 +66,6 @@ img {
     padding: 5px;
     margin: 0;
     background-color: rgb(225, 0, 255, 0.75);
-    color: white;
     border-radius: 10px;
     position: absolute;
     display: none;
@@ -59,24 +75,8 @@ img {
     display: block;
 }
 
-.mothership {
-    display: grid;
-    grid-template-rows: repeat(1, 100px);
-}
 
-.defence-ships {
-    display: grid;
-    grid-template-columns: repeat(5, 80px);
-    grid-template-rows: repeat(1, 80px);
-    align-content: center;
-}
-
-.attack-ships {
-    display: grid;
-    grid-template-columns: repeat(4, 60px);
-    grid-template-rows: repeat(2, 60px);
-}
-
+/* control panel and button styles */
 
 .control-panel {
     display: flex;
