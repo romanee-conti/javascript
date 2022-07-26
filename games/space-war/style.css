@@ -124,3 +124,24 @@ img {
 .hit {
     filter: brightness(0) invert(1);
 }
+
+.victory-msg {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, 0.9);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.victory-msg > h1, h4, button {
+    margin: 10px;
+}
+
+.victory-msg > button {
+    font-size: 1.2em;
+}

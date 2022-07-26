@@ -34,7 +34,8 @@ const defenceDiv = document.querySelector('[data-defence-div]')
 const attackDiv = document.querySelector('[data-attack-div]')
 
 const fireBtn = document.querySelector('[data-fire-btn]')
-const resetBtn = document.querySelector('[data-reset-btn]')
+const resetBtn = document.querySelectorAll('[data-reset-btn]')
+const victoryMsg = document.querySelector('[data-victory-msg]')
 
 
 let alienArr = [];
@@ -97,6 +98,19 @@ const damageRandomShip = () => {
     const randomIndex = Math.floor((Math.random() * alienArr.length));
     const randomShip = alienArr[randomIndex];
     randomShip.takeDamage()
+
+    victoryChecker()
+    removeDestroyedShips()
+}
+
+const victoryChecker = () => {
+    if (alienArr[0].hitPoints <= 0) {
+        victoryMsg.style.display = 'flex'
+    }
+}
+
+const removeDestroyedShips = () => {
+    alienArr = alienArr.filter(ship => ship.hitPoints > 0)
 }
 
 const startGame = () => {
@@ -106,21 +120,23 @@ const startGame = () => {
 
 const resetGame = () => {
     alienArr = null
+    victoryMsg.style.display = 'none'
     startGame()
 }
-
-
-// victory checker for when mothership is destroyed
-// taken damage add class / visual flag
 
 fireBtn.addEventListener('click', () => {
     damageRandomShip()
     createHTML()
 })
 
-resetBtn.addEventListener('click', () => {
+resetBtn.forEach(button => {
+    button.addEventListener('click', () => {
     resetGame()
+})
 })
 
 startGame()
 
+// to do:
+
+// taken damage visual flag / add class
