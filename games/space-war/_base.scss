@@ -27,9 +27,10 @@ button {
     width: 100px;
     background-color: $color-white;
     border: 2px solid $color-black;
+    margin: 10px;
 
     &:hover {
-        color: white;
+        color: $color-white;
         background-color: $color-black;
         border-color: $color-white;
     }

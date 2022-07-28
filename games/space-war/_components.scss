@@ -16,17 +16,11 @@
     &__stats-menu {
         list-style: none;
         padding: 5px;
-        margin: 0;
-        background-color: rgb(225, 0, 255, 0.75);
+        background-color: $color-menu;
         border-radius: 10px;
         position: absolute;
         display: none;
     }
-
-    .ship-container:hover .ship-container__stats-menu {
-        display: block;
-      }
-    
 
     &:hover 
     &__stats-menu {
@@ -51,15 +45,10 @@
     margin-top: 10px;
     padding: 10px;
 
-    > button {
-        margin: 10px;
+    &__fire-btn {
         font-size: 1.25em;
         width: 200px;
-    }
-
-    &__fire-btn {
         height: 2.5em;
-        border-radius: 10px;
         background-color: $color-alt;
         color: $color-secondary;
         border: 2px solid $color-secondary;
@@ -86,10 +75,6 @@
 
     > * {
         margin: 10px;
-    }
-
-    > button {
-        font-size: 1.2em;
     }
 }
 
