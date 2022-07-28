@@ -71,9 +71,10 @@ const createHTML = () => {
     attackDiv.innerHTML = ''
 
     alienArr.forEach(ship => {
+        let shipHTML = ''
 
         if (ship.isHit === true) {
-            const shipHTML = `
+            shipHTML = `
             <div data-ship-container class="ship-container">
             <img class="ship-container__img ship-container__img--hit" src="${ship.image}" alt="${ship.shipClass}"/>
             <ul class="ship-container__stats-menu">
@@ -83,32 +84,19 @@ const createHTML = () => {
             <p class="ship-container__hit-msg">Hit! -${ship.damagePerHit}HP</p>
             </div>
             `
-
-            if (ship.shipClass === 'Mothership') {
-                mothershipDiv.innerHTML += shipHTML;
-            }
-    
-            if (ship.shipClass === 'Defence Ship') {
-                defenceDiv.innerHTML += shipHTML;
-            }
-    
-            if (ship.shipClass === 'Attack Ship') {
-                attackDiv.innerHTML += shipHTML;
-            }
-
             ship.isHit = false;
-            return
-        }
         
-        const shipHTML = `
-        <div data-ship-container class="ship-container">
-        <img class="ship-container__img" src="${ship.image}" alt="${ship.shipClass}"/>
-        <ul class="ship-container__stats-menu">
-        <li>${ship.shipClass}</li>
-        <li>HP ${ship.hitPoints}</li>
-        </ul>
-        </div>
-        `
+        } else {
+            shipHTML = `
+            <div data-ship-container class="ship-container">
+            <img class="ship-container__img" src="${ship.image}" alt="${ship.shipClass}"/>
+            <ul class="ship-container__stats-menu">
+            <li>${ship.shipClass}</li>
+            <li>HP ${ship.hitPoints}</li>
+            </ul>
+            </div>
+            `
+        }
 
         if (ship.shipClass === 'Mothership') {
             mothershipDiv.innerHTML += shipHTML;
@@ -121,7 +109,6 @@ const createHTML = () => {
         if (ship.shipClass === 'Attack Ship') {
             attackDiv.innerHTML += shipHTML;
         }
-
     })
 }
 
