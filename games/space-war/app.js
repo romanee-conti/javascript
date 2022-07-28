@@ -14,19 +14,19 @@ class Ship {
 
 class Mothership extends Ship {
     constructor() {
-        super("Mothership", 100, 9, "./mothership.png")
+        super("Mothership", 100, 9, "./imgs/mothership.png")
     }
 }
 
 class DefenceShip extends Ship {
     constructor() {
-        super("Defence Ship", 80, 10, "./defender.png")
+        super("Defence Ship", 80, 10, "./imgs/defender.png")
     }
 }
 
 class AttackShip extends Ship {
     constructor() {
-        super("Attack Ship", 45, 12, "./invader.webp")
+        super("Attack Ship", 45, 12, "./imgs/invader.webp")
     }
 }
 
@@ -75,12 +75,12 @@ const createHTML = () => {
         if (ship.isHit === true) {
             const shipHTML = `
             <div data-ship-container class="ship-container">
-            <img class="hit" src="${ship.image}" alt="${ship.shipClass}"/>
-            <ul class="stats-menu">
+            <img class="ship-container__img ship-container__img--hit" src="${ship.image}" alt="${ship.shipClass}"/>
+            <ul class="ship-container__stats-menu">
             <li>${ship.shipClass}</li>
             <li>HP ${ship.hitPoints}</li>
             </ul>
-            <p>Hit! -${ship.damagePerHit}HP</p>
+            <p class="ship-container__hit-msg">Hit! -${ship.damagePerHit}HP</p>
             </div>
             `
 
@@ -102,8 +102,8 @@ const createHTML = () => {
         
         const shipHTML = `
         <div data-ship-container class="ship-container">
-        <img src="${ship.image}" alt="${ship.shipClass}"/>
-        <ul class="stats-menu">
+        <img class="ship-container__img" src="${ship.image}" alt="${ship.shipClass}"/>
+        <ul class="ship-container__stats-menu">
         <li>${ship.shipClass}</li>
         <li>HP ${ship.hitPoints}</li>
         </ul>

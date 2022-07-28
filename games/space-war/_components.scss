@@ -1,0 +1,95 @@
+@use "./base" as *;
+
+.ship-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    &__hit-msg {
+        color: $color-primary;
+        margin: 0;
+        font-size: 0.8em;
+    }
+
+    &__stats-menu {
+        list-style: none;
+        padding: 5px;
+        margin: 0;
+        background-color: rgb(225, 0, 255, 0.75);
+        border-radius: 10px;
+        position: absolute;
+        display: none;
+    }
+
+    .ship-container:hover .ship-container__stats-menu {
+        display: block;
+      }
+    
+
+    &:hover 
+    &__stats-menu {
+            display: block;
+    }
+
+    &__img {
+        max-width: 100%;
+        max-height: 100%;
+
+        &--hit {
+        filter: brightness(0) invert(1);
+        }
+    }
+}
+
+.control-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 10px;
+
+    > button {
+        margin: 10px;
+        font-size: 1.25em;
+        width: 200px;
+    }
+
+    &__fire-btn {
+        height: 2.5em;
+        border-radius: 10px;
+        background-color: $color-alt;
+        color: $color-secondary;
+        border: 2px solid $color-secondary;
+
+        &:hover {
+            color: $color-alt;
+            background-color: $color-secondary;
+            border-color: $color-alt;
+        }
+    }
+}
+
+.victory-msg {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: $color-fade;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    > * {
+        margin: 10px;
+    }
+
+    > button {
+        font-size: 1.2em;
+    }
+}
+
