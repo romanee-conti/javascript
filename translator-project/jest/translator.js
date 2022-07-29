@@ -10,7 +10,7 @@ const alphabet = [
 // with each letter separated by a space and each word separated by a forward slash "/"
 
 export const translateToMorse = (englishInputArray) => {
-    let output = '';
+    let output;
     let isNewWord = false;
     const morseArr = englishInputArray.map(char => {
 
@@ -31,18 +31,20 @@ export const translateToMorse = (englishInputArray) => {
     return output;
 }
 
+// takes an array of arrays of Morse code and returns a single string in English
+// An array of Morse code letters, inside an array separated by whole words, eg: [['...', '---', '...'], ['....'], ['..']]
+// New words in the English output are separated by a space
 
-
-const translateToEnglish = (morseInputArray) => {
+export const translateToEnglish = (morseInputArray) => {
+    let output;
     const englishArr = morseInputArray.map(word => {
         return word.map(char => {
-            const letterPair = this.alphabet.filter(letters => letters.includes(char))
+            const letterPair = alphabet.filter(letters => letters.includes(char))
 
             if (letterPair.length > 1) return letterPair[0][0] // to differentiate between 'full stop' and letter 'E'. Morse code for the letter 'E' is a fullstop.
 
             if (letterPair.length === 0) {
-                this.isError = true;
-                return;
+                return "Error";
             }
 
             return letterPair.map(letter => letter[0]);
@@ -50,5 +52,6 @@ const translateToEnglish = (morseInputArray) => {
         })
     })
     const cleanEnglish = englishArr.map(word => word.join('')).join(' ')
-    this.output = cleanEnglish
+    output = cleanEnglish;
+    return output;
 }
