@@ -43,7 +43,7 @@ class Translator {
         }
 
         if (!this.isEnglishToMorse) {
-            const morseWordArray = this.input.toLowerCase().split("/")
+            const morseWordArray = this.input.toLowerCase().split("/") // to lowercase stops function matching capital English letters in the alphabet pairs, instead returns error as no match for lowercase.
             const morseInputArray = morseWordArray.map(word => word.split(' '))
             this.translateToEnglish(morseInputArray)
         }
