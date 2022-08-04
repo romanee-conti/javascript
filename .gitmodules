@@ -1,0 +1,3 @@
+[submodule "react/react/mealworm-functional"]
+	path = react/react/mealworm-functional
+	url = https://github.com/romanee-conti/mealworm-functional
