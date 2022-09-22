@@ -1,8 +1,12 @@
-import './App.css';
+import styles from './App.module.scss';
+import data from './data/team';
 
 const App = () => {
   return (
-    <p>App working...</p>
+    <body>
+    <h1>Ticket Tracker</h1>
+    
+    </body>
   );
 }
 
