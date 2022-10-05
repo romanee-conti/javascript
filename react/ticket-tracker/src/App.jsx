@@ -1,9 +1,17 @@
+import React from 'react';
 import styles from './App.module.scss';
-import data from './data/team';
 import EmployeeCard from './components/EmployeeCard';
 import NavBar from './components/NavBar';
 
+import data from './data/team';
+
 const App = () => {
+
+const getEmployeeCardJsx = (data) => (
+  <div className={styles.card} key={data.id}>
+    <EmployeeCard data={data} />
+  </div>
+);
 
   return (
     <>
@@ -11,7 +19,7 @@ const App = () => {
     < NavBar />
     </nav>
     <section className={styles.content}>
-      < EmployeeCard />
+      {data.map(getEmployeeCardJsx)}
     </section>
     </>
   );
