@@ -10,6 +10,14 @@
         font-size: 2rem;
         height: 50px;
         width: 50px;
+        border: 1px black solid;
+        background-color: white;
+
+        &:hover {
+            background-color: black;
+            color: white;
+            border-color: white;
+        }
     }
 
     h1 {
