@@ -1,0 +1,17 @@
+.employeeCard {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    h4 {
+        padding: 10px 0;
+        color: crimson;
+    }
+
+    .cardCounter {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+}

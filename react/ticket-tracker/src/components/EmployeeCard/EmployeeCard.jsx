@@ -6,11 +6,15 @@ const EmployeeCard = (props) => {
     const {name, role} = props.data;
 
   return (
-    <div>
-        <h3>Name: {name}</h3>
-        <h3>Role: {role}</h3>
+    <main className={styles.employeeCard}>
+        <h4>Name:</h4>
+        <h3>{name}</h3>
+        <h4>Role:</h4>
+        <h3>{role}</h3>
+        <div className={styles.cardCounter}>
         < Counter />
-    </div>
+        </div>
+    </main>
   )
 }
 
