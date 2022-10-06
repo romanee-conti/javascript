@@ -2,11 +2,18 @@ import React from 'react';
 import styles from './App.module.scss';
 import NavBar from './components/NavBar/NavBar';
 
+import Routes from './containers/Routes';
+
 const App = () => {
   return (
-    <nav className={styles.nav}>
+    <>
+    <section className={styles.nav}>
         <NavBar />
-    </nav>
+    </section>
+    <section className={styles.content}>
+        <Routes />
+    </section>
+    </>
   )
 }
 
