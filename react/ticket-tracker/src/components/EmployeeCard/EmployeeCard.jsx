@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './EmployeeCard.module.scss';
 import Counter from '../Counter';
 

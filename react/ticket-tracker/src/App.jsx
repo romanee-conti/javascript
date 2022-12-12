@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './App.module.scss';
 import EmployeeCard from './components/EmployeeCard';
 import NavBar from './components/NavBar';
